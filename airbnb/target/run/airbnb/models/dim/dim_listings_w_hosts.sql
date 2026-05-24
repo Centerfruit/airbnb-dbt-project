@@ -2,7 +2,7 @@
   
     
 
-create or replace transient table AIRBNB.DBT_MYDEV.dim_listings_w_hosts
+create or replace transient table AIRBNB.DEV.dim_listings_w_hosts
     
     
     
@@ -11,11 +11,11 @@ l AS (
     SELECT
         *
     FROM
-        AIRBNB.PROD.dim_listings_cleansed
+        AIRBNB.DEV.dim_listings_cleansed
 ),
 h AS (
     SELECT *
-    FROM AIRBNB.PROD.dim_hosts_cleansed_v2
+    FROM AIRBNB.DEV.dim_hosts_cleansed_v2
 )
 
 SELECT

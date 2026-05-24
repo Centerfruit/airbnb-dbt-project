@@ -1,5 +1,5 @@
 
-  create or replace   view AIRBNB.DBT_MYDEV.dim_listings_cleansed
+  create or replace   view AIRBNB.DEV.dim_listings_cleansed
   
   
   

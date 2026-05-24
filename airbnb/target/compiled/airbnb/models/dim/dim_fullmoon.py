@@ -29,7 +29,7 @@ def model(dbt, session):
 # this part is dbt logic for get ref work, do not modify
 
 def ref(*args, **kwargs):
-    refs = {"seed_full_moon_dates": "AIRBNB.DBT_MYDEV.seed_full_moon_dates"}
+    refs = {"seed_full_moon_dates": "AIRBNB.DEV.seed_full_moon_dates"}
     key = '.'.join(args)
     version = kwargs.get("v") or kwargs.get("version")
     if version:
@@ -63,11 +63,11 @@ class config:
 class this:
     """dbt.this() or dbt.this.identifier"""
     database = "AIRBNB"
-    schema = "DBT_MYDEV"
+    schema = "DEV"
     identifier = "dim_fullmoon"
     
     def __repr__(self):
-        return 'AIRBNB.DBT_MYDEV.dim_fullmoon'
+        return 'AIRBNB.DEV.dim_fullmoon'
 
 
 class dbtObj:

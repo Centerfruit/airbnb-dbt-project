@@ -24,3 +24,8 @@ md5(cast(coalesce(cast(listing_id as TEXT), '_dbt_utils_surrogate_key_null_') ||
 * FROM src_reviews
 WHERE review_text is not null
 
+
+  
+    AND review_date > (select max(review_date) from AIRBNB.DEV.fct_reviews)
+    
+  

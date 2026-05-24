@@ -5,7 +5,7 @@
         
         count(*) as expression
     from
-        AIRBNB.DBT_MYDEV.dim_listings_w_hosts
+        AIRBNB.PROD.dim_listings_w_hosts
     
 
     ),

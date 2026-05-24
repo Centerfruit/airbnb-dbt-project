@@ -11,7 +11,7 @@ def model(dbt, sesseion):
 # this part is dbt logic for get ref work, do not modify
 
 def ref(*args, **kwargs):
-    refs = {"dim_listings_cleansed": "AIRBNB.DBT_MYDEV.dim_listings_cleansed"}
+    refs = {"dim_listings_cleansed": "AIRBNB.DEV.dim_listings_cleansed"}
     key = '.'.join(args)
     version = kwargs.get("v") or kwargs.get("version")
     if version:
@@ -45,11 +45,11 @@ class config:
 class this:
     """dbt.this() or dbt.this.identifier"""
     database = "AIRBNB"
-    schema = "DBT_MYDEV"
+    schema = "DEV"
     identifier = "dim_long_term_listings"
     
     def __repr__(self):
-        return 'AIRBNB.DBT_MYDEV.dim_long_term_listings'
+        return 'AIRBNB.DEV.dim_long_term_listings'
 
 
 class dbtObj:

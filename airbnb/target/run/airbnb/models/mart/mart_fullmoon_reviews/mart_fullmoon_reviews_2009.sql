@@ -2,17 +2,17 @@
   
     
 
-create or replace transient table AIRBNB.DBT_MYDEV_MART.mart_fullmoon_reviews
+create or replace transient table AIRBNB.DEV_MART.mart_fullmoon_reviews
     
     
     
     as (
 
 WITH fct_reviews AS (
-    SELECT * FROM (select * from AIRBNB.DBT_MYDEV.fct_reviews where review_date >= to_timestamp_tz('2009-01-01 00:00:00+00:00') and review_date < to_timestamp_tz('2010-01-01 00:00:00+00:00'))
+    SELECT * FROM (select * from AIRBNB.DEV.fct_reviews where review_date >= to_timestamp_tz('2009-01-01 00:00:00+00:00') and review_date < to_timestamp_tz('2010-01-01 00:00:00+00:00'))
 ),
 full_moon_dates AS (
-    SELECT * FROM AIRBNB.DBT_MYDEV.seed_full_moon_dates
+    SELECT * FROM AIRBNB.DEV.seed_full_moon_dates
 )
 
 SELECT

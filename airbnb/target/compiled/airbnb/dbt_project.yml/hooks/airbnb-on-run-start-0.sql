@@ -1,1 +1,1 @@
-CREATE TABLE IF NOT EXISTS DBT_MYDEV.audit_log ( model_name STRING, run_timestamp TIMESTAMP )
+CREATE TABLE IF NOT EXISTS PROD.audit_log ( model_name STRING, run_timestamp TIMESTAMP )

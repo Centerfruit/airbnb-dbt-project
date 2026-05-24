@@ -40,7 +40,7 @@ models:
       - dbt_expectations.expect_table_row_count_to_equal_other_table:
           compare_model: source('airbnb', 'listings')
     columns:
-      - name: price
+      - name: price_usd
         tests:
           - dbt_expectations.expect_column_quantile_values_to_be_between:
               quantile: .99

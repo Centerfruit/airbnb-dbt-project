@@ -4,13 +4,13 @@
     
     
 
-    delete from AIRBNB.DBT_MYDEV_MART.mart_fullmoon_reviews DBT_INTERNAL_TARGET
+    delete from AIRBNB.DEV_MART.mart_fullmoon_reviews DBT_INTERNAL_TARGET
     where (
     DBT_INTERNAL_TARGET.review_date >= to_timestamp_tz('2022-01-01 00:00:00+00:00')
     and DBT_INTERNAL_TARGET.review_date < to_timestamp_tz('2023-01-01 00:00:00+00:00')
     
-    );insert into AIRBNB.DBT_MYDEV_MART.mart_fullmoon_reviews ("REVIEW_ID", "LISTING_ID", "REVIEW_DATE", "REVIEWER_NAME", "REVIEW_TEXT", "REVIEW_SENTIMENT", "IS_FULL_MOON")
+    );insert into AIRBNB.DEV_MART.mart_fullmoon_reviews ("REVIEW_ID", "LISTING_ID", "REVIEW_DATE", "REVIEWER_NAME", "REVIEW_TEXT", "REVIEW_SENTIMENT", "IS_FULL_MOON")
     (
         select "REVIEW_ID", "LISTING_ID", "REVIEW_DATE", "REVIEWER_NAME", "REVIEW_TEXT", "REVIEW_SENTIMENT", "IS_FULL_MOON"
-        from AIRBNB.DBT_MYDEV_MART.mart_fullmoon_reviews__dbt_tmp_2022
+        from AIRBNB.DEV_MART.mart_fullmoon_reviews__dbt_tmp_2022
     )

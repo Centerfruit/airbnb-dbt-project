@@ -3,11 +3,11 @@ l AS (
     SELECT
         *
     FROM
-        AIRBNB.PROD.dim_listings_cleansed
+        AIRBNB.DEV.dim_listings_cleansed
 ),
 h AS (
     SELECT *
-    FROM AIRBNB.PROD.dim_hosts_cleansed_v2
+    FROM AIRBNB.DEV.dim_hosts_cleansed_v2
 )
 
 SELECT

@@ -1,10 +1,10 @@
 
 
 WITH fct_reviews AS (
-    SELECT * FROM (select * from AIRBNB.DBT_MYDEV.fct_reviews where review_date >= to_timestamp_tz('2019-01-01 00:00:00+00:00') and review_date < to_timestamp_tz('2020-01-01 00:00:00+00:00'))
+    SELECT * FROM (select * from AIRBNB.DEV.fct_reviews where review_date >= to_timestamp_tz('2019-01-01 00:00:00+00:00') and review_date < to_timestamp_tz('2020-01-01 00:00:00+00:00'))
 ),
 full_moon_dates AS (
-    SELECT * FROM AIRBNB.DBT_MYDEV.seed_full_moon_dates
+    SELECT * FROM AIRBNB.DEV.seed_full_moon_dates
 )
 
 SELECT

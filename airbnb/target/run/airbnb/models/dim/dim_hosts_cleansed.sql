@@ -2,7 +2,7 @@
   
     
 
-create or replace transient table AIRBNB.DBT_MYDEV.dim_hosts_cleansed_v1
+create or replace transient table AIRBNB.DEV.dim_hosts_cleansed_v1
     
   (
     host_id integer not null,
