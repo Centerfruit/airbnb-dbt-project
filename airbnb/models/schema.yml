@@ -1,11 +1,12 @@
 models:
   - name: dim_listings_cleansed
-    description:  Cleansed data for the airbnb listings dimension.
+    description: Cleansed data for the airbnb listings dimension.
     data_tests:
       - minimum_row_count:
           arguments:
             min_row_count: 100000000
-          severity: warn
+          config:
+            severity: warn
     columns:
       - name: listing_id
         description: The listing's id.
@@ -18,18 +19,19 @@ models:
         data_tests:
           - not_null
           - relationships:
-              to: ref('dim_hosts_cleansed')
-              field: host_id
-
+              arguments:
+                to: ref('dim_hosts_cleansed')
+                field: host_id
       - name: room_type
         description: Type of the apartment / room
         data_tests:
           - accepted_values:
-              values:
-                - 'Entire home/apt'
-                - 'Private room'
-                - 'Shared room'
-                - 'Hotel room'
+              arguments:
+                values:
+                  - 'Entire home/apt'
+                  - 'Private room'
+                  - 'Shared room'
+                  - 'Hotel room'
       - name: minimum_nights
         description: '{{ doc("dim_listing_cleansed__minimum_nights") }}'
         data_tests:
@@ -38,19 +40,22 @@ models:
   - name: dim_listings_w_hosts
     tests:
       - dbt_expectations.expect_table_row_count_to_equal_other_table:
-          compare_model: source('airbnb', 'listings')
+          arguments:
+            compare_model: source('airbnb', 'listings')
     columns:
       - name: price_usd #checking the price in USD
         tests:
           - dbt_expectations.expect_column_quantile_values_to_be_between:
-              quantile: .99
-              min_value: 50
-              max_value: 500
+              arguments:
+                quantile: .99
+                min_value: 50
+                max_value: 500
           - dbt_expectations.expect_column_max_to_be_between:
-              max_value: 5000
               config:
                 severity: warn
 
+              arguments:
+                max_value: 5000
   - name: dim_hosts_cleansed
     versions:
       - v: 1
@@ -68,29 +73,29 @@ models:
     latest_version: 2
     description: Cleansed data for the airbnb hosts dimension.
     config:
-      contract: 
+      contract:
         enforced: true
     columns:
-    - name: host_id
-      description: The host's id.
-      data_type: integer
-      constraints:
-        - type: not_null 
-      data_tests:
-        - unique
-    - name: host_name
-      data_type: string
-      data_tests:
-        - not_null
+      - name: host_id
+        description: The host's id.
+        data_type: integer
+        constraints:
+          - type: not_null
+        data_tests:
+          - unique
+      - name: host_name
+        data_type: string
+        data_tests:
+          - not_null
 
-    - name: is_superhost
-      data_type: string
-      data_tests:
-        - accepted_values:
-            values: ['t', 'f']
-    
-    - name: updated_at
-      data_type: timestamp
+      - name: is_superhost
+        data_type: string
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['t', 'f']
+      - name: updated_at
+        data_type: timestamp
 
-    - name: created_at
-      data_type: timestamp
+      - name: created_at
+        data_type: timestamp
