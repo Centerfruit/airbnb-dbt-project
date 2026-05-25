@@ -36,6 +36,7 @@ on-run-start:
 
 models:
   airbnb:
+    +static_analysis: strict
     +grants:
       select: ["transform", "reporter"]
     +post-hook:
@@ -56,3 +57,4 @@ vars:
   user_name: "tanuj_05"
 flags:
   require_generic_test_arguments_property: true
+  static_analysis: strict
