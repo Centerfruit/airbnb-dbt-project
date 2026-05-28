@@ -1,8 +1,9 @@
+-- Materialize this model as a view
 {{
   config(
-    materialized = 'view'
+    materialized = 'view' 
     )
-}}
+}} 
 
 WITH src_listings AS (
   SELECT

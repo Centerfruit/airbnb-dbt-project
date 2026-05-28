@@ -1,6 +1,7 @@
+-- Materialize this model as a table for better performance and easier downstream querying
 {{
   config(
-    materialized = 'table'
+    materialized = 'table' 
     )
 }}
 
@@ -8,7 +9,7 @@ WITH src_hosts AS (
     SELECT
         *
     FROM
-        {{ ref('src_hosts') }}
+        {{ ref('src_hosts') }} -- Reference to the source hosts table, which contains raw host data
 )
 SELECT
     host_id,
