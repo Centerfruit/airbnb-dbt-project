@@ -4,7 +4,11 @@ WITH raw_host_data AS (
         id AS host_id,
         NAME AS host_name,
         created_at AS host_since,
-        is_superhost AS host_is_superhost
+        CASE
+    WHEN LOWER(is_superhost) IN ('t', 'true', 'yes', '1')
+        THEN TRUE
+    ELSE FALSE
+END AS host_is_superhost
     FROM {{ source('airbnb', 'hosts') }}
     WHERE id IS NOT NULL
 ),
